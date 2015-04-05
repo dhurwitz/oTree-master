@@ -1,0 +1,16 @@
+{% extends "global/Base.html" %}
+{% load staticfiles otree_tags %}
+{% load i18n %}
+
+{% block title %}
+    Claim
+{% endblock %}
+
+{% block content %}
+<p>How many points will you claim for your antique?</p>
+    {% formfield player.claim %}
+    {% next_button %}
+    
+    {% include instructions %}
+
+{% endblock %}

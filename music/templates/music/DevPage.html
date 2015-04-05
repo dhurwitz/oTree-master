@@ -1,0 +1,765 @@
+{% extends "global/Base.html" %}
+{% load staticfiles otree_tags floppyforms %}
+{% load staticfiles %}
+
+
+{% block title %}
+    Consumer Phase
+
+{% endblock %}
+
+
+
+
+
+{% block content %}
+
+<!--
+Documentation on how to write a django template here:
+https://docs.djangoproject.com/en/dev/topics/templates/
+
+Bootstrap comes pre-loaded, so you can use any Bootstrap elements:
+http://getbootstrap.com/components/
+
+-->
+
+<!--
+
+HTML for Info Table
+
+-->
+
+    <div class = "totalInfo">
+
+        <table class = "tableInfo">
+
+            <tr>
+                <th class="tableTitle">Info</th>
+                <td></td>
+
+            </tr>
+
+            <tr>
+                <th>Budget: </th>
+                <td id="budget"> </td>
+            </tr>
+
+            <tr>
+                <th>Clicks: </th>
+                <td id="clickBudget"> </td>
+            </tr>
+
+             <tr>
+                <th>Total Value:  </th>
+                <td id="valueCount"> </td>
+            </tr>
+
+        </table>
+
+    </div>
+
+
+
+
+
+    <br> <br>
+
+
+
+
+    <br> <br>
+
+<!--
+
+HTML for Purchase/Pirate Albums
+
+-->
+
+<div class = "albumContainer">
+
+    <div class = "album" id = "own1">
+
+        <div class = "albumIMG">
+
+            <div class="imgA">
+
+            <img src="{{ STATIC_URL }}global/music/card.jpg" width="100" height="128">
+
+            </div>
+
+            <div class="albumText">
+
+            <span>Value: </span> <span id="val1"></span>  <br>
+            <span> CValue:</span> <span id="album1Count"></span>
+
+            </div>
+
+        </div>
+
+
+
+        <button type="button" class="btn btn-primary btnAlign" id="album1Button" data-complete-text="Purchased!" aria-pressed="false" autocomplete="off">
+        Purchase Album 1
+        </button>
+
+
+        <button type="button" class="btn btn-primary btnListen" id="album1Listen" aria-pressed="false" autocomplete="off">
+        Listen to Album 1
+        </button>
+
+        <br>
+
+        <button type="button" class="btn btn-primary btnAlign" id="piracy1Button" data-complete-text="Purchased!" aria-pressed="false" autocomplete="off">
+        Pirate Album 1
+        </button>
+
+
+
+    </div>
+
+    <div class = "album" id ='own2'>
+
+        <div class = "albumIMG">
+
+            <div class="imgA">
+
+            <img src="{{ STATIC_URL }}global/music/card.jpg" width="100" height="128">
+
+            </div>
+
+            <div class="albumText">
+
+            <span>Value: </span> <span id="val2"></span>  <br>
+            <span> CValue:</span> <span id="album2Count"></span>
+
+            </div>
+
+        </div>
+
+        <button type="button" class="btn btn-primary btnAlign" id="album2Button" data-complete-text="Purchased!" aria-pressed="false" autocomplete="off">
+        Purchase Album 2
+        </button>
+
+
+        <button type="button" class="btn btn-primary btnListen" id="album2Listen" aria-pressed="false" autocomplete="off">
+        Listen to Album 2
+        </button>
+
+        <br>
+
+        <button type="button" class="btn btn-primary btnAlign" id="piracy2Button" data-complete-text="Purchased!" aria-pressed="false" autocomplete="off">
+        Pirate Album 2
+        </button>
+
+    </div>
+
+    <div class = "album" id="own3">
+
+        <div class = "albumIMG">
+
+            <div class="imgA">
+
+            <img src="{{ STATIC_URL }}global/music/card.jpg" width="100" height="128">
+
+            </div>
+
+            <div class="albumText">
+
+            <span>Value: </span> <span id="val3"></span>  <br>
+            <span> CValue:</span> <span id="album3Count"></span>
+
+            </div>
+
+        </div>
+
+        <button type="button" class="btn btn-primary btnAlign" id="album3Button" data-complete-text="Purchased!" aria-pressed="false" autocomplete="off">
+        Purchase Album 3
+        </button>
+
+
+        <button type="button" class="btn btn-primary btnListen" id="album3Listen" aria-pressed="false" autocomplete="off">
+        Listen to Album 3
+        </button>
+
+        <br>
+
+        <button type="button" class="btn btn-primary btnAlign" id="piracy3Button" data-complete-text="Purchased!" aria-pressed="false" autocomplete="off">
+        Pirate Album 3
+        </button>
+
+    </div>
+
+    <div class = "album" id = "own4">
+
+        <div class = "albumIMG">
+
+            <div class="imgA">
+
+            <img src="{{ STATIC_URL }}global/music/card.jpg" width="100" height="128">
+
+            </div>
+
+            <div class="albumText">
+
+            <span>Value: </span> <span id="val4"></span>  <br>
+            <span> CValue:</span> <span id="album4Count"></span>
+
+            </div>
+
+        </div>
+
+        <button type="button" class="btn btn-primary btnAlign" id="album4Button" data-complete-text="Purchased!" aria-pressed="false" autocomplete="off">
+        Purchase Album 4
+        </button>
+
+
+        <button type="button" class="btn btn-primary btnListen" id="album4Listen" aria-pressed="false" autocomplete="off">
+        Listen to Album 4
+        </button>
+
+        <br>
+
+        <button type="button" class="btn btn-primary btnAlign" id="piracy4Button" data-complete-text="Purchased!" aria-pressed="false" autocomplete="off">
+        Pirate Album 4
+        </button>
+
+    </div>
+
+</div>
+
+
+<!--
+
+HTML for Subscription Albums
+
+-->
+
+<br> <br> <br> <br>
+
+<div class = "subOuterContainer">
+
+    <div class = "subPurchase">
+
+        <div class = "subCenterButton">
+
+            <button type="button" class="btn btn-primary btnPurchaseSub" id="subPurchase" aria-pressed="false" autocomplete="off">
+            Purchase Subscription Service
+            </button>
+
+        </div>
+
+        <div class = "subInnerContainer">
+
+
+
+    <div class = "shadedDiv" id = "shadedDiv">
+
+
+        <div class = "subalbumContainer">
+
+            <div class = "album" id="sub1">
+
+        <div class = "albumIMG">
+
+            <div class="imgA">
+
+            <img src="{{ STATIC_URL }}global/music/card.jpg" width="100" height="128">
+
+            </div>
+
+            <div class="albumText">
+
+            <span>Value: </span> <span id="subval1"></span>  <br>
+            <span> CValue:</span> <span id="subalbum1Count"></span>
+
+            </div>
+
+        </div>
+
+
+
+
+        <button type="button" class="btn btn-primary btnListenSub" id="subalbum1Listen" aria-pressed="false" autocomplete="off">
+        Listen to Album 1
+        </button>
+
+
+
+
+
+    </div>
+
+            <div class = "album" id="sub2">
+
+        <div class = "albumIMG">
+
+            <div class="imgA">
+
+            <img src="{{ STATIC_URL }}global/music/card.jpg" width="100" height="128">
+
+            </div>
+
+            <div class="albumText">
+
+            <span>Value: </span> <span id="subval2"></span>  <br>
+            <span> CValue:</span> <span id="subalbum2Count"></span>
+
+            </div>
+
+        </div>
+
+
+
+
+        <button type="button" class="btn btn-primary btnListenSub" id="subalbum2Listen" aria-pressed="false" autocomplete="off">
+        Listen to Album 2
+        </button>
+
+
+
+
+
+    </div>
+
+            <div class = "album" id="sub3">
+
+        <div class = "albumIMG">
+
+            <div class="imgA">
+
+            <img src="{{ STATIC_URL }}global/music/card.jpg" width="100" height="128">
+
+            </div>
+
+            <div class="albumText">
+
+            <span>Value: </span> <span id="subval3"></span>  <br>
+            <span> CValue:</span> <span id="subalbum3Count"></span>
+
+            </div>
+
+        </div>
+
+
+
+
+        <button type="button" class="btn btn-primary btnListenSub" id="subalbum3Listen" aria-pressed="false" autocomplete="off">
+        Listen to Album 3
+        </button>
+
+
+
+
+
+    </div>
+
+            <div class = "album" id = "sub4">
+
+        <div class = "albumIMG">
+
+            <div class="imgA">
+
+            <img src="{{ STATIC_URL }}global/music/card.jpg" width="100" height="128">
+
+            </div>
+
+            <div class="albumText">
+
+            <span>Value: </span> <span id="subval4"></span>  <br>
+            <span> CValue:</span> <span id="subalbum4Count"></span>
+
+            </div>
+
+        </div>
+
+
+
+
+        <button type="button" class="btn btn-primary btnListenSub" id="subalbum4Listen" aria-pressed="false" autocomplete="off">
+        Listen to Album 4
+        </button>
+
+
+
+
+
+        </div>
+
+        </div>
+
+    </div>
+
+    </div>
+
+    </div>
+
+
+
+</div>
+
+
+
+
+
+    <br> <br>
+
+
+
+
+    <script>
+
+
+    var album1Val = "{{album1}}";
+    var album2Val = "{{album2}}";
+    var album3Val = "{{album3}}";
+    var album4Val = "{{album4}}";
+
+    var album1ValINT = parseInt(album1Val);
+    var album2ValINT = parseInt(album2Val);
+    var album3ValINT = parseInt(album3Val);
+    var album4ValINT = parseInt(album4Val);
+
+
+    var album1Pur = false;
+    var album2Pur = false;
+    var album3Pur = false;
+    var album4Pur = false;
+
+
+    var numAlbumsBought = 0;
+    var totalBudget = 100;
+    var albumCost = 20;
+    var subCost = 50;
+    var remainBudget = (totalBudget - (numAlbumsBought * albumCost));
+
+
+    /* Variable for Consumer Value */
+    var totalValue = 0;
+
+
+    var testNum = "{{testNum}}";
+    var testNumInt = 2 /* parseInt(testNum); */
+
+    var clickBudget = 15;
+
+
+    document.getElementById("budget").innerHTML = remainBudget;
+    document.getElementById("clickBudget").innerHTML = clickBudget;
+
+    document.getElementById("valueCount").innerHTML = totalValue;
+
+
+    if (testNumInt < 1){
+        document.getElementById("own1").style.display = 'none';
+        document.getElementById("own2").style.display = 'none';
+        document.getElementById("own3").style.display = 'none';
+        document.getElementById("own4").style.display = 'none';
+
+        document.getElementById("sub1").style.display = 'none';
+        document.getElementById("sub2").style.display = 'none';
+        document.getElementById("sub3").style.display = 'none';
+        document.getElementById("sub4").style.display = 'none';
+    }
+
+    else if (testNumInt < 2){
+        document.getElementById("own2").style.display = 'none';
+        document.getElementById("own3").style.display = 'none';
+        document.getElementById("own4").style.display = 'none';
+
+        document.getElementById("sub2").style.display = 'none';
+        document.getElementById("sub3").style.display = 'none';
+        document.getElementById("sub4").style.display = 'none';
+    }
+
+    else if (testNumInt < 3){
+        document.getElementById("own3").style.display = 'none';
+        document.getElementById("own4").style.display = 'none';
+
+        document.getElementById("sub3").style.display = 'none';
+        document.getElementById("sub4").style.display = 'none';
+    }
+
+    else if (testNumInt < 4){
+        document.getElementById("own4").style.display = 'none';
+
+        document.getElementById("sub4").style.display = 'none';
+    }
+
+
+
+
+
+
+    $('#album1Button').on('click', function () {
+    $(this).button('complete'); // button text will be "purchased!"
+    document.getElementById("val1").innerHTML = album1Val;
+    numAlbumsBought += 1;
+    remainBudget = (totalBudget - (numAlbumsBought * albumCost));
+    document.getElementById("budget").innerHTML = remainBudget;
+    document.getElementById("album1Count").innerHTML = album1ValINT;
+    document.getElementById("album1Listen").style.display = 'inline-block';
+    document.getElementById("album1Button").style.display = 'none';
+    });
+
+
+
+
+
+    $('#album1Listen').on('click', function () {
+
+    totalValue += album1ValINT;
+    document.getElementById("valueCount").innerHTML = totalValue;
+
+    album1ValINT -= 1;
+    remainBudget = (totalBudget - (numAlbumsBought * albumCost));
+    document.getElementById("budget").innerHTML = remainBudget;
+    document.getElementById("album1Count").innerHTML = album1ValINT;
+
+    clickBudget -= 1;
+    document.getElementById("clickBudget").innerHTML = clickBudget;
+
+    });
+
+
+
+    $('#album2Button').on('click', function () {
+    $(this).button('complete'); // button text will be "purchased!"
+    document.getElementById("val2").innerHTML = album2Val;
+    numAlbumsBought += 1;
+    remainBudget = (totalBudget - (numAlbumsBought * albumCost));
+    document.getElementById("budget").innerHTML = remainBudget;
+    document.getElementById("album2Count").innerHTML = album2ValINT;
+    document.getElementById("album2Listen").style.display = 'inline-block';
+    document.getElementById("album2Button").style.display = 'none';
+    });
+
+     $('#album2Listen').on('click', function () {
+
+    totalValue += album2ValINT;
+    document.getElementById("valueCount").innerHTML = totalValue;
+
+    album2ValINT -= 1;
+    document.getElementById("album2Count").innerHTML = album2ValINT;
+
+    clickBudget -= 1;
+    document.getElementById("clickBudget").innerHTML = clickBudget;
+
+    });
+
+
+
+    $('#album3Button').on('click', function () {
+    $(this).button('complete'); // button text will be "purchased!"
+    document.getElementById("val3").innerHTML = album3Val;
+    numAlbumsBought += 1;
+    remainBudget = (totalBudget - (numAlbumsBought * albumCost));
+    document.getElementById("budget").innerHTML = remainBudget;
+    document.getElementById("album3Count").innerHTML = album3ValINT;
+    document.getElementById("album3Listen").style.display = 'inline-block';
+    document.getElementById("album3Button").style.display = 'none';
+    });
+
+     $('#album3Listen').on('click', function () {
+
+    totalValue += album3ValINT;
+    document.getElementById("valueCount").innerHTML = totalValue;
+
+    album3ValINT -= 1;
+    document.getElementById("album3Count").innerHTML = album3ValINT;
+
+    clickBudget -= 1;
+    document.getElementById("clickBudget").innerHTML = clickBudget;
+
+    });
+
+
+    $('#album4Button').on('click', function () {
+    $(this).button('complete'); // button text will be "purchased!"
+    document.getElementById("val4").innerHTML = album4Val;
+    numAlbumsBought += 1;
+    remainBudget = (totalBudget - (numAlbumsBought * albumCost));
+    document.getElementById("budget").innerHTML = remainBudget;
+    document.getElementById("album4Count").innerHTML = album4ValINT;
+    document.getElementById("album4Listen").style.display = 'inline-block';
+    document.getElementById("album4Button").style.display = 'none';
+    });
+
+     $('#album4Listen').on('click', function () {
+
+    totalValue += album4ValINT;
+    document.getElementById("valueCount").innerHTML = totalValue;
+
+    album4ValINT -= 1;
+    document.getElementById("album4Count").innerHTML = album4ValINT;
+
+    clickBudget -= 1;
+    document.getElementById("clickBudget").innerHTML = clickBudget;
+
+    });
+
+
+    /*Piracy Buttons */
+
+    $('#piracy1Button').on('click', function () {
+    $(this).button('complete'); // button text will be "purchased!"
+
+    document.getElementById("val1").innerHTML = album1Val;
+
+
+    document.getElementById("budget").innerHTML = remainBudget;
+    document.getElementById("album1Count").innerHTML = album1ValINT;
+    document.getElementById("album1Listen").style.display = 'inline-block';
+    document.getElementById("album1Button").style.display = 'none';
+    });
+
+    $('#piracy2Button').on('click', function () {
+    $(this).button('complete'); // button text will be "purchased!"
+
+    document.getElementById("val2").innerHTML = album2Val;
+
+
+    document.getElementById("budget").innerHTML = remainBudget;
+    document.getElementById("album2Count").innerHTML = album2ValINT;
+    document.getElementById("album2Listen").style.display = 'inline-block';
+    document.getElementById("album2Button").style.display = 'none';
+    });
+
+    $('#piracy3Button').on('click', function () {
+    $(this).button('complete'); // button text will be "purchased!"
+
+    document.getElementById("val3").innerHTML = album3Val;
+
+
+    document.getElementById("budget").innerHTML = remainBudget;
+    document.getElementById("album3Count").innerHTML = album3ValINT;
+    document.getElementById("album3Listen").style.display = 'inline-block';
+    document.getElementById("album3Button").style.display = 'none';
+    });
+
+    $('#piracy4Button').on('click', function () {
+    $(this).button('complete'); // button text will be "purchased!"
+
+    document.getElementById("val4").innerHTML = album4Val;
+
+
+    document.getElementById("budget").innerHTML = remainBudget;
+    document.getElementById("album4Count").innerHTML = album4ValINT;
+    document.getElementById("album4Listen").style.display = 'inline-block';
+    document.getElementById("album4Button").style.display = 'none';
+    });
+
+
+    /* Subscription Button Scripts */
+
+    $('#subPurchase').on('click', function () {
+
+
+    remainBudget -= subCost;
+    document.getElementById("budget").innerHTML = remainBudget;
+
+    document.getElementById("shadedDiv").style.background = 'white';
+    document.getElementById("shadedDiv").style.opacity = '1';
+
+    document.getElementById("subalbum1Listen").style.display = 'inline-block';
+    document.getElementById("subalbum2Listen").style.display = 'inline-block';
+    document.getElementById("subalbum3Listen").style.display = 'inline-block';
+    document.getElementById("subalbum4Listen").style.display = 'inline-block';
+
+    document.getElementById("subalbum1Count").innerHTML = album1ValINT;
+    document.getElementById("subval1").innerHTML = album1Val;
+
+    document.getElementById("subalbum2Count").innerHTML = album2ValINT;
+    document.getElementById("subval2").innerHTML = album2Val;
+
+    document.getElementById("subalbum3Count").innerHTML = album3ValINT;
+    document.getElementById("subval3").innerHTML = album3Val;
+
+    document.getElementById("subalbum4Count").innerHTML = album4ValINT;
+    document.getElementById("subval4").innerHTML = album4Val;
+
+    });
+
+    $('#subalbum1Listen').on('click', function () {
+
+    totalValue += album1ValINT;
+    document.getElementById("valueCount").innerHTML = totalValue;
+
+    album1ValINT -= 1;
+    remainBudget = (totalBudget - (numAlbumsBought * albumCost));
+    document.getElementById("budget").innerHTML = remainBudget;
+    document.getElementById("subalbum1Count").innerHTML = album1ValINT;
+
+    document.getElementById("subval1").innerHTML = album1Val;
+
+    clickBudget -= 1;
+    document.getElementById("clickBudget").innerHTML = clickBudget;
+
+    });
+
+    $('#subalbum2Listen').on('click', function () {
+
+    totalValue += album2ValINT;
+    document.getElementById("valueCount").innerHTML = totalValue;
+
+    album2ValINT -= 1;
+    remainBudget = (totalBudget - (numAlbumsBought * albumCost));
+    document.getElementById("budget").innerHTML = remainBudget;
+    document.getElementById("subalbum2Count").innerHTML = album2ValINT;
+
+    document.getElementById("subval2").innerHTML = album2Val;
+
+    clickBudget -= 1;
+    document.getElementById("clickBudget").innerHTML = clickBudget;
+
+    });
+
+    $('#subalbum3Listen').on('click', function () {
+
+    totalValue += album3ValINT;
+    document.getElementById("valueCount").innerHTML = totalValue;
+
+    album3ValINT -= 1;
+    remainBudget = (totalBudget - (numAlbumsBought * albumCost));
+    document.getElementById("budget").innerHTML = remainBudget;
+    document.getElementById("subalbum3Count").innerHTML = album3ValINT;
+
+    document.getElementById("subval3").innerHTML = album3Val;
+
+    clickBudget -= 1;
+    document.getElementById("clickBudget").innerHTML = clickBudget;
+
+    });
+
+    $('#subalbum4Listen').on('click', function () {
+
+    totalValue += album4ValINT;
+    document.getElementById("valueCount").innerHTML = totalValue;
+
+    album4ValINT -= 1;
+    remainBudget = (totalBudget - (numAlbumsBought * albumCost));
+    document.getElementById("budget").innerHTML = remainBudget;
+    document.getElementById("subalbum4Count").innerHTML = album4ValINT;
+
+    document.getElementById("subval4").innerHTML = album4Val;
+
+    clickBudget -= 1;
+    document.getElementById("clickBudget").innerHTML = clickBudget;
+
+    });
+
+
+    </script>
+
+
+
+
+
+
+
+    {% next_button %}
+
+<!-- don't put anything after here -->
+{% endblock %}
+
+
+

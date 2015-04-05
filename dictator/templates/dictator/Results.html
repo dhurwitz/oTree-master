@@ -1,0 +1,23 @@
+{% extends "global/Base.html" %}
+{% load staticfiles otree_tags %}
+{% load i18n %}
+
+{% block title %}
+Results
+{% endblock %}
+
+{% block content %}
+<p>
+
+{% if player.id_in_group == 1 %}
+You decided to keep <strong>{{group.kept}}</strong> for yourself.
+{% else %}
+Participant 1 decided to keep <strong>{{group.kept}}</strong>, so you got <strong>{{offer}}</strong>.
+{% endif %}
+In addition, you receive 10 points for participation. Thus, your total payoff is <strong>{{player.payoff}}</strong>.
+</p>
+<p>
+{% next_button %}
+</p>
+{% include instructions %}
+{% endblock %}
